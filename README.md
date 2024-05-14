@@ -2,6 +2,11 @@
 
 ## Visão Geral:
 
+
+
+
+
+
 O aplicativo é uma plataforma web que permite aos usuários fazerem resumos de documentos em PDF de forma rápida e eficiente. Ele utiliza um modelo GPT (Generative Pre-trained Transformer) para gerar resumos automáticos do conteúdo do PDF e aplica OCR (Reconhecimento Óptico de Caracteres) quando necessário para documentos sem OCR prévio.
 
 ## Funcionalidades:
