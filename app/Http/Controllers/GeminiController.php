@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\GeminiAIService;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
+use App\Enums\TextPromptType;
+use App\Services\GeminiAIService;
 
 class GeminiController extends Controller
 {
@@ -23,7 +23,14 @@ class GeminiController extends Controller
             return response()->json(['error' => 'Prompt is required'], 400);
         }
 
-        $generatedText = $this->geminiService->generateText($prompt);
+        $completePrompt = $this->addActionToPrompt($prompt);
+        $generatedText = $this->geminiService->generateText($completePrompt);
         return response()->json(['text' => $generatedText], 200);
+    }
+
+    private function addActionToPrompt(String $prompt): string
+    {
+        $promptType = TextPromptType::SUMMARIZE_TEXT;
+        return (string)$promptType->value . $prompt;
     }
 }
